@@ -1,0 +1,17 @@
+msg = "HELLO1234567890!"       # 16 chars
+key = "MYSECRETKEY12345"       # 16 chars
+
+def xor(a, b):
+    return ''.join(chr(ord(x)^ord(y)) for x, y in zip(a, b))
+
+def sub(s):
+    return ''.join(chr((ord(c)+1)%256) for c in s)  # simple +1
+
+def shift(s):
+    return s[0]+s[5]+s[10]+s[15]+s[4]+s[9]+s[14]+s[3]+s[8]+s[13]+s[2]+s[7]+s[12]+s[1]+s[6]+s[11]
+
+s = xor(msg, key)
+s = sub(s)
+s = shift(s)
+
+print("Encrypted:", ''.join(f"{ord(c):02x}" for c in s))
