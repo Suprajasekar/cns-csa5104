@@ -1,0 +1,21 @@
+msg = ["hi", "th", "er"]
+key = "xy"
+iv = "ab"
+out = []
+prev = iv
+for m in msg:
+ x = chr(ord(m[0])^ord(prev[0])) + chr(ord(m[1])^ord(prev[1]))
+ c = chr(ord(x[0])^ord(key[0])) + chr(ord(x[1])^ord(key[1]))
+ out.append(c)
+ prev = c
+print("Encrypted:", out)
+
+# Decrypt
+prev = iv
+plain = []
+for c in out:
+ x = chr(ord(c[0])^ord(key[0])) + chr(ord(c[1])^ord(key[1]))
+ m = chr(ord(x[0])^ord(prev[0])) + chr(ord(x[1])^ord(prev[1]))
+ plain.append(m)
+ prev = c
+print("Decrypted:", plain)
