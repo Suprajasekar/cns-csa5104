@@ -1,0 +1,14 @@
+def feistel(l, r, key):
+    for _ in range(4):  # 4 rounds for simplicity
+        l, r = r, l ^ (r ^ key)
+    return l, r
+
+key = 0xA5A5A5A5
+data = 0x12345678ABCDEF00
+l = (data >> 32) & 0xFFFFFFFF
+r = data & 0xFFFFFFFF
+
+l, r = feistel(l, r, key)
+cipher = (l << 32) | r
+
+print("Encrypted:", hex(cipher))
