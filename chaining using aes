@@ -1,0 +1,26 @@
+def xor(a, b): return ''.join(chr(ord(x)^ord(y)) for x, y in zip(a, b))
+
+msg = "helloworld1234!!"  # 16 characters
+key = "mysecretkey12345"  # 16 bytes
+iv  = "initvector123456"  # 16 bytes
+
+# Encrypt
+c = []
+prev = iv
+for i in range(0, len(msg), 16):
+ b = msg[i:i+16]
+ x = xor(b, prev)
+ y = xor(x, key)
+ c.append(y)
+ prev = y
+print("Encrypted:", c)
+
+# Decrypt
+p = []
+prev = iv
+for y in c:
+ x = xor(y, key)
+ b = xor(x, prev)
+ p.append(b)
+ prev = y
+print("Decrypted:", ''.join(p))
