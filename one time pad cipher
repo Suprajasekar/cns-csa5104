@@ -1,0 +1,7 @@
+msg = "hello"
+key = "xmckl"
+cipher = ""
+for i in range(len(msg)):
+ c = (ord(msg[i]) - 97 + ord(key[i]) - 97) % 26
+ cipher += chr(c + 97)
+print(cipher)
