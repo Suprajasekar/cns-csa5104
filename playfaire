@@ -1,0 +1,22 @@
+k="playfairexample"
+m="hidethegold".replace("j","i")
+k=k.replace("j","i")
+s=""
+for c in k+"abcdefghiklmnopqrstuvwxyz":
+ if c not in s: s+=c
+b=[s[i:i+5]for i in range(0,25,5)]
+p=[];i=0
+while i<len(m):
+ a=m[i];b1=m[i+1]if i+1<len(m)else"x"
+ if a==b1:i+=1;b1="x"
+ else:i+=2
+ p.append([a,b1])
+c=""
+for a,b2 in p:
+ for r in range(5):
+  if a in b[r]:r1=r;c1=b[r].index(a)
+  if b2 in b[r]:r2=r;c2=b[r].index(b2)
+ if r1==r2:c+=b[r1][(c1+1)%5]+b[r2][(c2+1)%5]
+ elif c1==c2:c+=b[(r1+1)%5][c1]+b[(r2+1)%5][c2]
+ else:c+=b[r1][c2]+b[r2][c1]
+print("Encrypted:",c)
