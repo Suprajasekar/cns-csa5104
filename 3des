@@ -1,0 +1,19 @@
+def simple_des(data, key):
+    return ''.join(chr((ord(c) ^ key) % 256) for c in data)
+
+msg = "hello123"
+k1 = 12
+k2 = 78
+k3 = 45
+
+step1 = simple_des(msg, k1)       
+step2 = simple_des(step1, k2)    
+step3 = simple_des(step2, k3)    
+
+print("Encrypted:", step3)
+
+
+d1 = simple_des(step3, k3)
+d2 = simple_des(d1, k2)
+d3 = simple_des(d2, k1)
+print("Decrypted:", d3)
