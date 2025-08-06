@@ -1,0 +1,10 @@
+plain = "hello"
+key = "phqgiumeaylnofdxjkrcvstzwb"
+
+cipher = ""
+for c in plain:
+ if c.isalpha():
+  cipher += key[ord(c) - ord('a')]
+ else:
+  cipher += c
+print(cipher)
