@@ -1,0 +1,34 @@
+def xor(a, b): return ''.join(chr(ord(x)^ord(y)) for x, y in zip(a, b))
+def pad(s, n): return s + " " * ((n - len(s) % n) % n)
+
+msg = pad("hellopython", 2)
+key = "KY"
+iv = "IV"
+block = 2
+
+def enc(b): return xor(b, key[:block])  # fake cipher
+
+# ECB
+ecb = [enc(msg[i:i+block]) for i in range(0, len(msg), block)]
+
+# CBC
+cbc = []
+prev = iv
+for i in range(0, len(msg), block):
+ b = xor(msg[i:i+block], prev)
+ y = enc(b)
+ cbc.append(y)
+ prev = y
+
+# CFB
+cfb = []
+prev = iv
+for i in range(0, len(msg), block):
+ ks = enc(prev)
+ y = xor(ks, msg[i:i+block])
+ cfb.append(y)
+ prev = y
+
+print("ECB:", ecb)
+print("CBC:", cbc)
+print("CFB:", cfb)
