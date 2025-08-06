@@ -1,0 +1,12 @@
+text = "hello"
+shift = 3
+result = ""
+for char in text:
+ if char.isalpha():
+  shifted = ord(char) + shift
+  if shifted > ord('z'):
+   shifted -= 26
+  result += chr(shifted)
+ else:
+  result += char
+print("Encrypted:", result)
