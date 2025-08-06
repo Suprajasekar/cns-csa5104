@@ -1,0 +1,9 @@
+key = "1010101111001101"  # 16-bit binary string
+rounds = 4
+subkeys = []
+
+for i in range(rounds):
+    key = key[1:] + key[0]           # left circular shift
+    subkeys.append(key[:8])          # take first 8 bits as subkey
+
+print("Subkeys:", subkeys)
