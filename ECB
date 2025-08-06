@@ -1,0 +1,13 @@
+msg = ["hi", "th", "er"]
+key = "xy"
+out = []
+for m in msg:
+ c = chr(ord(m[0])^ord(key[0])) + chr(ord(m[1])^ord(key[1]))
+ out.append(c)
+print("Encrypted:", out)
+
+plain = []
+for c in out:
+ m = chr(ord(c[0])^ord(key[0])) + chr(ord(c[1])^ord(key[1]))
+ plain.append(m)
+print("Decrypted:", plain)
