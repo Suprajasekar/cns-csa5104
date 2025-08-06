@@ -1,0 +1,18 @@
+p = 23
+q = 11
+g = 2
+x = 4
+y = pow(g, x, p)
+
+k = 9
+r = pow(g, k, p) % q
+h = 3
+k_inv = pow(k, -1, q)
+s = (k_inv * (h + x*r)) % q
+
+s_inv = pow(s, -1, q)
+u1 = (h * s_inv) % q
+u2 = (r * s_inv) % q
+v = ((pow(g, u1, p) * pow(y, u2, p)) % p) % q
+
+print(r, s, v == r)
