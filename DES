@@ -1,0 +1,16 @@
+def xor(a, b):
+ return ''.join(['0' if i==j else '1' for i,j in zip(a,b)])
+
+def toy_des(msg, key):
+ rounds = 4
+ l, r = msg[:4], msg[4:]
+ for _ in range(rounds):
+  f = xor(r, key[:4])  # simple "F" function
+  l, r = r, xor(l, f)
+ return l + r
+
+# 8-bit binary inputs (must be 8 bits each)
+msg = '10101010'
+key = '00110011'
+enc = toy_des(msg, key)
+print("Encrypted:", enc)
