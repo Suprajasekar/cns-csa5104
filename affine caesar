@@ -1,0 +1,12 @@
+msg = "hello"
+a = 5
+b = 8
+cipher = ""
+for c in msg:
+ if c.isalpha():
+  x = ord(c) - 97
+  e = (a * x + b) % 26
+  cipher += chr(e + 97)
+ else:
+  cipher += c
+print(cipher)
