@@ -1,0 +1,13 @@
+msg = "help"
+msg = msg.replace(" ", "")
+key = [[3, 3], [2, 5]]
+cipher = ""
+
+for i in range(0, len(msg), 2):
+ a = ord(msg[i]) - 97
+ b = ord(msg[i+1]) - 97
+ c1 = (key[0][0]*a + key[0][1]*b) % 26
+ c2 = (key[1][0]*a + key[1][1]*b) % 26
+ cipher += chr(c1 + 97) + chr(c2 + 97)
+
+print(cipher)
