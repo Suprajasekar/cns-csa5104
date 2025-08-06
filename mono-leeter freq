@@ -1,0 +1,14 @@
+cipher = "wkh txlfn eurzq ira mxpsv ryhu wkh odcb grj"
+cipher = cipher.replace(" ", "")
+freq = {}
+for c in cipher:
+ freq[c] = freq.get(c, 0) + 1
+sorted_freq = sorted(freq.items(), key=lambda x: -x[1])
+english_freq = "etaoinshrdlcumwfgypbvkjxqz"
+mapping = {}
+for i in range(len(sorted_freq)):
+ mapping[sorted_freq[i][0]] = english_freq[i]
+plain = ""
+for c in cipher:
+ plain += mapping.get(c, c)
+print("Decrypted guess:", plain)
