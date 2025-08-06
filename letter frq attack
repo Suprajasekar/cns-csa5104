@@ -1,0 +1,8 @@
+text = "wkh txlfn eurzq ira mxpsv ryhu wkh odcb grj"
+freq = {}
+for c in text:
+ if c.isalpha():
+  freq[c] = freq.get(c, 0) + 1
+sorted_freq = sorted(freq.items(), key=lambda x: -x[1])
+for l, f in sorted_freq:
+ print(l, f)
