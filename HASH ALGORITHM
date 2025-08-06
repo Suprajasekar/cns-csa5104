@@ -1,0 +1,4 @@
+import hashlib
+msg = "hello"
+h = hashlib.sha256(msg.encode()).hexdigest()
+print(h)
